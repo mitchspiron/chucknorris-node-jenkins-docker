@@ -1,0 +1,2 @@
+docker CI:
+	- key: dckr_pat_PPMLrr4MVYjrtukA7Je-d8QM_jU
