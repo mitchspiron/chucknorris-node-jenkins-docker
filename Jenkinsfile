@@ -20,7 +20,7 @@ pipeline {
         stage ("Push image") {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
-                    bat 'docker login -u $DOCKERHUB_USERNAME -P $DOCKERHUB_PASSWORD'
+                    bat 'docker login -u %DOCKERHUB_USERNAME% -p %DOCKERHUB_PASSWORD%'
                     bat 'docker tag chucknorris mitchspiron/chucknorris'
                     bat 'docker push mitchspiron/chucknorris'
                     bat 'docker logout'
