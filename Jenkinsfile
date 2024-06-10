@@ -22,7 +22,7 @@ pipeline {
                 bat 'echo %DOCKERHUB_USERNAME%'
                 withCredentials([usernamePassword( credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
                     def registry_url = "registry.hub.docker.com/"
-                    bat 'docker login -u $USER -p $PASSWORD ${registry_url}'
+                    bat 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD ${registry_url}'
                     docker.withRegistry("http://${registry_url}", "docker-hub-credentials") {
                         bat 'docker tag chucknorris mitchspiron/chucknorris'
                         bat 'docker push mitchspiron/chucknorris'
