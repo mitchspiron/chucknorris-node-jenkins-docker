@@ -12,5 +12,10 @@ pipeline {
                 bat 'npm run build'
             }
         }
+        stage ("Build image") {
+            steps {
+                bat 'docker build . -t chucknorris'
+            }
+        }
     }
 }
